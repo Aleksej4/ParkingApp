@@ -1,20 +1,22 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
+import { DataContextProvider } from './data_context/DataContext';
+import { LogInScreen } from './screens/LogInScreen';
+import { ActiveParkingsScreen } from './screens/ActiveParkingsScreen';
+import { QRCodeScannerScreen } from './screens/QRCodeScannerScreen';
+
+const Stack = createStackNavigator();
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <DataContextProvider>
+      <NavigationContainer>
+        <Stack.Navigator initialRouteName='LogInScreen' screenOptions={{headerStyle:{backgroundColor: '#EEF5FF'}}}>
+          <Stack.Screen name='LogInScreen' component={LogInScreen} options={{headerShown: false}}/>
+          <Stack.Screen name='ActiveParkingsScreen' component={ActiveParkingsScreen} options={{headerTitle: 'My Parkings'}}/>
+          <Stack.Screen name='QRCodeScannerScreen' component={QRCodeScannerScreen} options={{headerTitle: 'New parking'}}/>
+        </Stack.Navigator>
+      </NavigationContainer>
+    </DataContextProvider>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
