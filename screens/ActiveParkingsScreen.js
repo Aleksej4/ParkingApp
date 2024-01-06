@@ -6,6 +6,7 @@ import { useFocusEffect } from "@react-navigation/native"
 import { ButtonComponent } from "../components/ButtonComponent"
 import { fetchActiveParkings } from "../firebase/fetchActiveParkings"
 import { DataContext } from "../data_context/DataContext"
+import { ActiveParkingComponent } from "../components/ActiveParkingComponent"
 
 export const ActiveParkingsScreen = ({navigation}) => {
     const [parkings, setParkings] = useState([])
@@ -48,7 +49,7 @@ export const ActiveParkingsScreen = ({navigation}) => {
                 <View style={{alignItems: 'center'}}>
                     {parkings.map((parking) => (
                         <View key={parking.QRCodeData}>
-                            <Text>{parking.QRCodeData}</Text>
+                            <ActiveParkingComponent parking={parking} onActionTrigger={onRefresh}/>
                         </View>
                     ))}
                 </View>
