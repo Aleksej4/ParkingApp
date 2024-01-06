@@ -6,7 +6,8 @@ export const activeParkingComponentStyles = StyleSheet.create({
         width: 300,
         height: 190,
         backgroundColor: '#9EB8D9',
-        borderRadius: 10
+        borderRadius: 10,
+        margin: 10
     },
 
     containerTitle:{

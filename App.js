@@ -4,6 +4,7 @@ import { DataContextProvider } from './data_context/DataContext';
 import { LogInScreen } from './screens/LogInScreen';
 import { ActiveParkingsScreen } from './screens/ActiveParkingsScreen';
 import { QRCodeScannerScreen } from './screens/QRCodeScannerScreen';
+import { RegisterScreen } from './screens/RegisterScreen';
 
 const Stack = createStackNavigator();
 
@@ -12,6 +13,7 @@ export default function App() {
     <DataContextProvider>
       <NavigationContainer>
         <Stack.Navigator initialRouteName='LogInScreen' screenOptions={{headerStyle:{backgroundColor: '#EEF5FF'}}}>
+          <Stack.Screen name='RegisterScreen' component={RegisterScreen} options={{headerShown: false}}/>
           <Stack.Screen name='LogInScreen' component={LogInScreen} options={{headerShown: false}}/>
           <Stack.Screen name='ActiveParkingsScreen' component={ActiveParkingsScreen} options={{headerTitle: 'My Parkings'}}/>
           <Stack.Screen name='QRCodeScannerScreen' component={QRCodeScannerScreen} options={{headerTitle: 'New parking'}}/>
